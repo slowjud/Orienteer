@@ -2,6 +2,13 @@
 
 Orienteer can navigate through your rails app with little more than a compass and a map.
 
+== TODO
+
+* Find your obsolete routes
+* Find missing views
+* Find unused named routes
+* Find unactionable routes
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
