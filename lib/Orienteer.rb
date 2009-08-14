@@ -1,7 +1,7 @@
-module Orienteer
+class Orienteer
 
   #find any named routes which are not called by name
-  def unused_named_routes
+  def self.unused_named_routes
     foo = {}
     basenames = ActionController::Routing::Routes.named_routes.routes.keys
     basenames.each {|name| foo[name] = false}
@@ -18,7 +18,7 @@ module Orienteer
   end
 
   #find controllers which are referenced in the routes but don't exist
-  def missing_controllers
+  def self.missing_controllers
     controllers = ActionController::Routing::Routes.routes.collect {|r| "#{r.requirements[:controller]}_controller".classify}
     missing = []
     controllers.uniq.each do |c|
@@ -32,7 +32,7 @@ module Orienteer
   end
 
   #find controller actions called routes but do not have code
-  def missing_actions
+  def self.missing_actions
     missing = []
     ActionController::Routing::Routes.routes.each do |route|
       begin
@@ -46,7 +46,7 @@ module Orienteer
   end
 
   #find any routes which don't have view
-  def missing_views
+  def self.missing_views
     missing = []
     missing_actions.each do |action|
       if Dir.glob(File.join(ActionController::Base.view_paths, action[:controller], action[:action]+".*")).empty?

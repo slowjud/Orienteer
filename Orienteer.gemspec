@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{Orienteer}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jude Sutton"]
-  s.date = %q{2009-08-12}
+  s.date = %q{2009-08-14}
   s.description = %q{Orienteer will map out the routes through your app and find anomalies(??)}
   s.email = %q{jude.sutton@gmail.com}
   s.extra_rdoc_files = [
@@ -17,7 +17,15 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "VERSION"
+    "LICENSE",
+     "Orienteer.gemspec",
+     "README.rdoc",
+     "Rakefile",
+     "VERSION",
+     "lib/Orienteer.rb",
+     "tasks/orienteer.rake",
+     "test/Orienteer_test.rb",
+     "test/test_helper.rb"
   ]
   s.homepage = %q{http://github.com/slowjud/Orienteer}
   s.rdoc_options = ["--charset=UTF-8"]

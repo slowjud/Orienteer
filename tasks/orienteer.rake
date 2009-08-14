@@ -12,7 +12,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following named routes are not referenced"
     puts "-"*40
-    unused_named_routes.keys.each{|k| puts k.to_s}
+    Orienteer.unused_named_routes.keys.each{|k| puts k.to_s}
     puts "\n"*2
     
   end
@@ -22,7 +22,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following actions are referenced but do not exist."
     puts "-"*40
-    missing_views.each{|c| puts "#{c[:controller]} #{c[:action]}"}
+    Orienteer.missing_views.each{|c| puts "#{c[:controller]} #{c[:action]}"}
     puts "\n"*2
   end
   
@@ -31,7 +31,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following controllers are referenced but do not exist."
     puts "-"*40
-    missing_controllers.each{|c| puts c}
+    Orienteer.missing_controllers.each{|c| puts c}
     puts "\n"*2
   end
 
@@ -40,7 +40,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following actions are referenced but do not exist."
     puts "-"*40
-    missing_actions.each{|c| puts "#{c[:controller]} #{c[:action]}"}
+    Orienteer.missing_actions.each{|c| puts "#{c[:controller]} #{c[:action]}"}
     puts "\n"*2
   end
 end
