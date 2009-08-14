@@ -2,12 +2,12 @@
 
 Orienteer can navigate through your rails app with little more than a compass and a map.
 
+If you use magic, i.e. before filters or method missing, some routes might be shown as bad but really will work.
+
 == TODO
 
 * Find your obsolete routes
 * Find missing views
-* Find unused named routes
-* Find unactionable routes
 
 == Note on Patches/Pull Requests
  

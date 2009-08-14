@@ -10,16 +10,18 @@ namespace :orienteer do
     puts "-"*40
     puts "The following named routes are not referenced"
     puts "-"*40
-    Orienteer.unused_named_routes.keys.each{|k| puts k.to_s}
+    unused_named_routes.keys.each{|k| puts k.to_s}
     puts "\n"*2
     
   end
   
-  desc "explore the routes"
+  desc "show any routes which can't be rendered"
   task :explore, :needs => [:environment] do
-    puts "Mapping routes"
-    controllers = ActionController::Routing::Routes.routes.collect {|r| "#{r.defaults[:controller]}_controller".classify}
-    
+    puts "-"*40
+    puts "The following actions are referenced but do not exist."
+    puts "-"*40
+    missing_actions.each{|c| puts "#{c[:controller]} #{c[:action]}"}
+    puts "\n"*2
   end
   
   desc "show any controllers referenced in the routes but do not exist"
@@ -27,7 +29,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following controllers are referenced but do not exist."
     puts "-"*40
-    Orienteer.missing_controllers.each{|c| puts c}
+    missing_controllers.each{|c| puts c}
     puts "\n"*2
   end
 
@@ -36,7 +38,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following actions are referenced but do not exist."
     puts "-"*40
-    Orienteer.missing_actions.each{|c| puts "#{c[:controller]} #{c[:action]}"}
+    missing_actions.each{|c| puts "#{c[:controller]} #{c[:action]}"}
     puts "\n"*2
   end
 end

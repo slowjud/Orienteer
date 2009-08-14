@@ -1,10 +1,4 @@
-class Orienteer
-
-  #reset the cached copy of the routes
-  def reload
-    @routes = ActionController::Routing::Routes.routes
-    @named_routes = ActionController::Routing::Routes.named_routes.routes
-  end
+module Orienteer
 
   #find any named routes which are not called by name
   def unused_named_routes
@@ -54,8 +48,11 @@ class Orienteer
   #find any routes which don't have view
   def missing_views
     missing = []
-    ActionController::Routing::Routes.routes.each do |route|
-      
+    missing_actions.each do |action|
+      if Dir.glob(File.join(ActionController::Base.view_paths, action[:controller], action[:action]+".*")).empty?
+        missing << action
+      end
     end
+    missing
   end
 end
