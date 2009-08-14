@@ -1,6 +1,8 @@
 
 namespace :orienteer do
   
+  include 'Orienteer'
+  
   desc "perform a complete mapping of routes"
   task :map, :needs => [:environment, :navigate, :explore]
   
@@ -20,7 +22,7 @@ namespace :orienteer do
     puts "-"*40
     puts "The following actions are referenced but do not exist."
     puts "-"*40
-    missing_actions.each{|c| puts "#{c[:controller]} #{c[:action]}"}
+    missing_views.each{|c| puts "#{c[:controller]} #{c[:action]}"}
     puts "\n"*2
   end
   
