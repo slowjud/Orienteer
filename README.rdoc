@@ -8,6 +8,7 @@ If you use magic, i.e. before filters or method missing, some routes might be sh
 
 * Find your obsolete routes
 * Find missing views
+* Find duplicate entries in the routes.rb
 
 == Note on Patches/Pull Requests
  
