@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{Orienteer}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jude Sutton"]
@@ -17,11 +17,13 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "LICENSE",
+    ".gitignore",
+     "LICENSE",
      "Orienteer.gemspec",
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "init.rb",
      "lib/Orienteer.rb",
      "tasks/orienteer.rake",
      "test/Orienteer_test.rb",
