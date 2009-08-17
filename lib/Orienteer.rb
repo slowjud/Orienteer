@@ -55,4 +55,19 @@ class Orienteer
     end
     missing
   end
+
+  def self.unused_actions
+    unused = []
+    ActionController::Routing::Routes.routes.collect{|r| r.requirements[:controller]}.uniq.sort.each do |controller|
+      begin
+        (controller+'_controller').classify.constantize.action_methods.each do |action|
+          unless ActionController::Routing::Routes.routes.find{|r| r.requirements[:controller] == controller && r.requirements[:action] == action}
+            unused << [controller, action]
+          end
+        end
+      rescue
+      end
+    end
+    unused
+  end
 end
