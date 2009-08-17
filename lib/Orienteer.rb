@@ -1,22 +1,5 @@
 class Orienteer
 
-  #find any named routes which are not called by name
-  def self.unused_named_routes
-    foo = {}
-    basenames = ActionController::Routing::Routes.named_routes.routes.keys
-    basenames.each {|name| foo[name] = false}
-    Dir.glob(File.join(RAILS_ROOT, '/app', '**', '*.rb')).each do |file|
-      data = File.read(file)
-      basenames.each do |base_name|
-        reg =  Regexp.new(base_name.to_s+"_(?=url|path)")
-        if reg.match data
-          foo[base_name] = true
-        end
-      end
-    end
-    foo.reject{|k, v| v == true}
-  end
-
   #find controllers which are referenced in the routes but don't exist
   def self.missing_controllers
     controllers = ActionController::Routing::Routes.routes.collect {|r| "#{r.requirements[:controller]}_controller".classify}
@@ -56,6 +39,24 @@ class Orienteer
     missing
   end
 
+  #find any named routes which are not called by name
+  def self.unused_named_routes
+    foo = {}
+    basenames = ActionController::Routing::Routes.named_routes.routes.keys
+    basenames.each {|name| foo[name] = false}
+    Dir.glob(File.join(RAILS_ROOT, '/app', '**', '*.rb')).each do |file|
+      data = File.read(file)
+      basenames.each do |base_name|
+        reg =  Regexp.new(base_name.to_s+"_(?=url|path)")
+        if reg.match data
+          foo[base_name] = true
+        end
+      end
+    end
+    foo.reject{|k, v| v == true}
+  end
+
+  # find any actions which can't be reached via routes
   def self.unused_actions
     unused = []
     ActionController::Routing::Routes.routes.collect{|r| r.requirements[:controller]}.uniq.sort.each do |controller|

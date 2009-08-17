@@ -4,11 +4,27 @@ Orienteer can navigate through your rails app with little more than a compass an
 
 If you use magic, i.e. before filters or method missing, some routes might be shown as bad but really will work.
 
+Orienteer is fast becoming a rails static analysis / refactoring tool. Its currently concentrating on the MVC but may expand in the future.
+
+== Usage
+
+Just require 'Orienteer' and your ready to go.
+
+There are some main routines you will probably want to use, they are all pretty self explanatory:
+
+* Orienteer.missing_controllers
+* Orienteer.missing_actions
+* Orienteer.missing_views
+* Orienteer.unused_named_routes
+* Orienteer.unused_actions
+
 == TODO
 
+* Standardise the return values
 * Find your obsolete routes
 * Find missing views
 * Find duplicate entries in the routes.rb
+* Find unreachable actions including following alias methods
 
 == Note on Patches/Pull Requests
  
